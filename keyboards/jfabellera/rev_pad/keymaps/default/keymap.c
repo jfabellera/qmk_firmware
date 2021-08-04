@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
                  TG(1),   KC_PSLS, KC_PAST, KC_PMNS,
@@ -41,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
         if (clockwise) {
-            tap_code(KC_VOLU);
+            tap_code16(LCTL(LSFT(KC_Z)));
         } else {
-            tap_code(KC_VOLD);
+            tap_code16(LCTL(KC_Z));
         }
     }
     return true;
